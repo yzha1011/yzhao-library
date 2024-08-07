@@ -1,7 +1,8 @@
 <script setup>
 // import HelloWorld from './components/HelloWorld.vue'
 // import TheWelcome from './components/TheWelcome.vue'
-import JSON from './components/JSON.vue';
+// import JSON from './components/JSON.vue';
+import Form from './components/Form.vue'
 </script>
 
 <template>
@@ -11,9 +12,13 @@ import JSON from './components/JSON.vue';
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div> -->
-  <div class="box">
+  <!-- week2 activity -->
+  <!-- <div class="box">
     <JSON />
-  </div>
+  </div> -->
+  <!-- week3 activity -->
+  
+  <Form />
   
   <!-- </header> -->
 
@@ -25,12 +30,38 @@ import JSON from './components/JSON.vue';
 
 <style scoped>
 
-.box {
-  width: 1152px;
-  margin: 0 auto;
+/* .box {
+  /* width: 1152px; */
+  /* width: 100%;
+  margin: 0 auto; 
+  display: flex;
+  justify-self: center;
+  align-items: center; 
+  height: 100vh;
+  width: 100%;
+} */
 
+/* .outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
+.inner-container {
+  width: 100%;
+  max-width: 600px; 
+  padding: 0 15px; 
+} */
 
+/* .container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.center {
+  text-align: center
+} */
  
 </style>
