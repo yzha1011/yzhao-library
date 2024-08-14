@@ -7,7 +7,7 @@ import Form from './components/Form.vue'
 
 <template>
   <!-- <header> -->
-    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -17,22 +17,21 @@ import Form from './components/Form.vue'
     <JSON />
   </div> -->
   <!-- week3 activity -->
-  
+
   <Form />
-  
+
   <!-- </header> -->
 
   <!-- <main> -->
-    <!-- <TheWelcome /> -->
-    
+  <!-- <TheWelcome /> -->
+
   <!-- </main> -->
 </template>
 
 <style scoped>
-
 /* .box {
   /* width: 1152px; */
-  /* width: 100%;
+/* width: 100%;
   margin: 0 auto; 
   display: flex;
   justify-self: center;
@@ -63,5 +62,4 @@ import Form from './components/Form.vue'
 .center {
   text-align: center
 } */
- 
 </style>

@@ -15,13 +15,13 @@
           {{ author.name }} ({{ author.birthYear }})
         </li>
       </ul>
-      
+
       <h3>Filtering Arrays</h3>
       <!-- Activity 7: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Authors born after 1850:</p>
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
       <ul>
-        <li v-for="author in modernAuthors" :key="author.id"> 
+        <li v-for="author in modernAuthors" :key="author.id">
           {{ author.name }} ({{ author.birthYear }})
         </li>
       </ul>
@@ -48,7 +48,6 @@
           {{ work.title }} ({{ work.year }})
         </li>
       </ul>
-      
     </section>
 
     <section class="lab-section">
@@ -80,7 +79,6 @@
         </li>
       </ul>
 
-
       <h3>Nested Objects</h3>
       <p>Opening Hours:</p>
       <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
@@ -95,10 +93,12 @@
       <h3>Working with Arrays in Objects</h3>
       <!-- Activity 12: Get the top sellers from the bookstores object. -->
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
-      <p>We operate in: 
+      <p>
+        We operate in:
         {{ bookstoresData.countries.join(', ') }}
       </p>
-      <p>Our #1 seller:
+      <p>
+        Our #1 seller:
         <!-- <ul>
           <li v-for="topSeller in bookstoresData.topSellers" :key="topSeller">
             {{ topSeller }}
@@ -120,49 +120,52 @@
 
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
-      <p>Highlighting Specific Authors: </p>
+      <p>Highlighting Specific Authors:</p>
       <ul>
-        <li v-for="author in authors" :key="author.id" :class="{highlight: author.name === 'George Orwell'}">
+        <li
+          v-for="author in authors"
+          :key="author.id"
+          :class="{ highlight: author.name === 'George Orwell' }"
+        >
           {{ author.name }} ({{ author.birthYear }})
         </li>
       </ul>
-      
-
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed } from 'vue'
 
 // Activity 1: Import JSON files (authors.json and bookstores.json)
 // TODO: CODE TO IMPORT JSON FILES HERE
-import authors from "../assets/json/authors.json"
-import bookstores from "../assets/json/bookstores.json"
+import authors from '../assets/json/authors.json'
+import bookstores from '../assets/json/bookstores.json'
 
 const showMessage = ref(false)
 
 // const change = () => fontWeight.value = fontWeight.value === "bold" ? "normal": "bold"
 
 // Activity 2: Get authors born after 1850
-const modernAuthors = computed(() => authors.filter(author => author.birthYear > 1850))
+const modernAuthors = computed(() => authors.filter((author) => author.birthYear > 1850))
 
 // Activity 3: Get all famous works
-const allFamousWorks = computed(() => authors.flatMap(author => author.famousWorks.map(famousWork => famousWork.title)))
+const allFamousWorks = computed(() =>
+  authors.flatMap((author) => author.famousWorks.map((famousWork) => famousWork.title))
+)
 
 // Activity 4: Find author by name
-const orwell = computed(() => authors.filter(author => author.name === "George Orwell"))
+const orwell = computed(() => authors.filter((author) => author.name === 'George Orwell'))
 
 // Activity 5: Find author by ID
-const austen = computed(() => authors.filter(author => author.id === 1))
+const austen = computed(() => authors.filter((author) => author.id === 1))
 
 const bookstoresData = bookstores
-
 </script>
 
 <style scoped>
 .json-lab {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 556px;
   margin: 0 auto;
   padding: 20px;
@@ -207,7 +210,7 @@ code {
   background-color: #e0e0e0;
   padding: 2px 5px;
   border-radius: 4px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 ul {
