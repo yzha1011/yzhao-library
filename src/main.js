@@ -3,7 +3,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { createApp,ref } from 'vue'
-import App from './App.vue'
+import App from './App'
 import router from "./router"
 
 import PrimeVue from 'primevue/config'
