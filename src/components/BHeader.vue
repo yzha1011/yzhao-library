@@ -9,31 +9,39 @@
             Home (Week 5)
           </router-link>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
-        </li> -->
+        </li>
         <li class="nav-item">
           <router-link v-if="!isAuthenticated" to="/login" class="nav-link" active-class="active">
             Login
           </router-link>
-          <router-link v-else class="nav-link" @click="logout" to="/login" active-class="active"> Logout </router-link>
+          <router-link v-else class="nav-link" @click="logOut" to="/login" active-class="active"> Logout </router-link>
         </li>
       </ul>
     </header>
   </div>
 </template>
 
-<!-- <script setup>
-import { useRouter } from 'vue-router';
-import { isAuthenticated } from '../main';
+<script setup>
+// import { useRouter } from 'vue-router';
+// import { isAuthenticated } from '../main';
 
-// const router = useRouter();
+// // const router = useRouter();
 
-const logout = () => {
-  isAuthenticated.value = false;
-  router.push('/login')
-};
-</script> -->
+// const logout = () => {
+//   isAuthenticated.value = false;
+//   router.push('/login')
+// };
+import { auth } from '@/utils/Auth';
+
+const {logout} = auth()
+const {isAuthenticated} = auth()
+
+const logOut = () => {
+  logout()
+} 
+</script>
 
 <style scoped>
 .b-example-divider {
@@ -72,11 +80,6 @@ const logout = () => {
 }
 </style>
 
-<script setup>
-import { isAuthenticated } from '../main'
 
-const logout = () => {
-  isAuthenticated.value = false
-  // router.push('/login')
-}
-</script>
+
+

@@ -2,7 +2,7 @@
 // import '@/assets/style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { createApp,ref } from 'vue'
+import { createApp} from 'vue'
 import App from './App'
 import router from "./router"
 
@@ -11,7 +11,7 @@ import Aura from '@primevue/themes/aura'
 // import DataTable from 'primevue/datatable'
 // import Column from 'primevue/Column'
 
-export let isAuthenticated = ref(false);
+// export let isAuthenticated = ref(false);
 
 const app = createApp(App)
 app.use(PrimeVue, { theme: { preset: Aura } })

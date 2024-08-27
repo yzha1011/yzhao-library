@@ -36,7 +36,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
-import { isAuthenticated } from '../main';
+import { auth } from '../utils/Auth';
+
+const {isAuthenticated} = auth()
 
 const guestInput = ref({
   username: '',
@@ -53,7 +55,7 @@ const correctUser = {
 const loginWeb = () => {
   if (guestInput.value.username === correctUser.username && guestInput.value.password === correctUser.password) {
     isAuthenticated.value = true;
-    router.push('/about');
+    router.push({name: "About"})
   } else {
     isAuthenticated.value = false;
     alert('Invalid username or password');
