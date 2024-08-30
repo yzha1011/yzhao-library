@@ -55,6 +55,7 @@ const correctUser = {
 const loginWeb = () => {
   if (guestInput.value.username === correctUser.username && guestInput.value.password === correctUser.password) {
     isAuthenticated.value = true;
+    alert("Login successful")
     router.push({name: "About"})
   } else {
     isAuthenticated.value = false;
