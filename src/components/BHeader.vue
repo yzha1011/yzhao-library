@@ -18,6 +18,16 @@
           </router-link>
           <router-link v-else class="nav-link" @click="logOut" to="/login" active-class="active"> Logout </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/FireLogin" class="nav-link" active-class="active">
+            Firebase Login
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/FireRegister" class="nav-link" active-class="active">
+            Firebase Register
+          </router-link>
+        </li>
       </ul>
     </header>
   </div>
@@ -79,7 +89,6 @@ const logOut = () => {
   outline: 0;
 }
 </style>
-
 
 
 

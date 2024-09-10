@@ -60,6 +60,7 @@ const loginWeb = () => {
   } else {
     isAuthenticated.value = false;
     alert('Invalid username or password');
+    router.push({name:"Redirection"})
   }
 }
 </script>

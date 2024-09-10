@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView'
 import AboutView from '../views/AboutView'
 import LoginView from '@/views/LoginView'
 import RedirectionView from '@/views/RedirectionView.vue'
+import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
+import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import { auth } from '../utils/Auth'
 
 const {isAuthenticated} = auth()
@@ -27,6 +29,16 @@ const routes = [
     path: '/redirect',
     name: 'Redirection',
     component: RedirectionView
+  },
+  {
+    path: '/FireLogin',
+    name: 'FireLogin',
+    component: FirebaseSigninView
+  },
+  {
+    path: '/FireRegister',
+    name: 'FireRegister',
+    component: FirebaseRegisterView
   }
 ]
 
