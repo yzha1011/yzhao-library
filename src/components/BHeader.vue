@@ -13,10 +13,12 @@
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
         <li class="nav-item">
-          <router-link v-if="!isAuthenticated" to="/login" class="nav-link" active-class="active">
+          <router-link to="/login" class="nav-link" active-class="active">
             Login
           </router-link>
-          <router-link v-else class="nav-link" @click="logOut" to="/login" active-class="active"> Logout </router-link>
+        </li>
+        <li>
+          <button class="nav-link" @click="firebaseLogout"> Firebase Logout</button>
         </li>
         <li class="nav-item">
           <router-link to="/FireLogin" class="nav-link" active-class="active">
@@ -43,14 +45,17 @@
 //   isAuthenticated.value = false;
 //   router.push('/login')
 // };
-import { auth } from '@/utils/Auth';
+import { getAuth, signOut } from 'firebase/auth';
 
-const {logout} = auth()
-const {isAuthenticated} = auth()
 
-const logOut = () => {
-  logout()
-} 
+const authentication = getAuth()
+const firebaseLogout = () => {
+  signOut(authentication).then(() => {
+    alert("Sign out success")
+  }).catch((error) => {
+    console.log("error: ", error)
+  })
+}
 </script>
 
 <style scoped>

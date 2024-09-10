@@ -1,8 +1,8 @@
 <template>
-  <h1>Create an Account</h1>
+  <h1>Sign in</h1>
   <p><input type="text" placeholder="Email" v-model="email" /></p>
   <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p><button @click="register">Save to Firebase</button></p>
+  <p><button @click="siginin">Save to Firebase</button></p>
 </template>
 
 <script setup>
@@ -14,12 +14,21 @@ const email = ref("");
 const password = ref("");
 const router = useRouter();
 const auth = getAuth();
+const adminEmail = "admin@admin.com"
 
-const register = () => {
+const siginin = () => {
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then((data) => {
+      if(data.user.email === adminEmail) {
+        alert("welcome Admin")
+        router.push("/Admin");
+      } else {
+        alert("user Login successful")
+        router.push("/");
+      }
       console.log("Firebase Register Successful!");
-      router.push("/FireLogin");
+      console.log("userData: ", data)
+      console.log("user: ", data.user)
     })
     .catch((error) => {
       console.log(error.code);

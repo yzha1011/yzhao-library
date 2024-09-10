@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
+import { getAuth } from 'firebase/auth';
 
+console.log("current auth: ", getAuth())
 const formData = ref({
   username: '',
   password: '',
