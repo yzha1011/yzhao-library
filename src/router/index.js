@@ -6,6 +6,7 @@ import RedirectionView from '@/views/RedirectionView.vue'
 import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
 import AdminView from '@/views/AdminView.vue'
+import AddBookView from '@/views/AddBookView.vue'
 import { auth } from '../utils/Auth'
 
 const {isAuthenticated} = auth()
@@ -44,6 +45,10 @@ const routes = [
     path: '/Admin',
     name: 'Admin',
     component: AdminView
+  },{
+    path: '/AddBook',
+    name: 'AddBook',
+    component: AddBookView
   }
 ]
 
