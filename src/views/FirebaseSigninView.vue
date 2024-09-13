@@ -23,15 +23,18 @@ const siginin = () => {
         alert("welcome Admin")
         router.push("/Admin");
       } else {
+        
         alert("user Login successful")
         router.push("/");
       }
       console.log("Firebase Register Successful!");
-      console.log("userData: ", data)
       console.log("user: ", data.user)
+      console.log("userData: ", data)
+      
     })
     .catch((error) => {
       console.log(error.code);
     });
 };
+console.log("current auth: ", getAuth())
 </script>

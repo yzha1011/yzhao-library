@@ -12,41 +12,47 @@
       </div>
       <button type="submit">Add Book</button>
     </form>
-    <book-list></book-list>
+    <book-list @selectBook="handleSelectBook"></book-list>
+    <update-book :selectedBookId="selectedBookId"></update-book>
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
-import db from '../firebase/init.js';
-import { collection, addDoc } from 'firebase/firestore';
-import BookList from '../components/BookList.vue';
+import { ref } from 'vue'
+import db from '../firebase/init.js'
+import { collection, addDoc } from 'firebase/firestore'
+import BookList from '../components/BookList.vue'
+import UpdateBook from '@/components/UpdateBook.vue'
 
-const isbn = ref('');
-const name = ref('');
+const isbn = ref('')
+const name = ref('')
+const selectedBookId = ref('')
+
+const handleSelectBook = (id) => {
+  selectedBookId.value = id
+  console.log(selectedBookId.value)
+}
 
 const addBook = async () => {
   try {
-    const isbnNumber = Number(isbn.value);
+    const isbnNumber = Number(isbn.value)
     if (isNaN(isbnNumber)) {
-      alert('ISBN must be a valid number');
-      return;
+      alert('ISBN must be a valid number')
+      return
     }
 
     await addDoc(collection(db, 'books'), {
       isbn: isbnNumber,
-      name: name.value,
-    });
+      name: name.value
+    })
 
-    isbn.value = '';
-    name.value = '';
-    alert('Book added successfully!');
+    isbn.value = ''
+    name.value = ''
+    alert('Book added successfully!')
   } catch (error) {
-    console.error('Error adding book: ', error);
+    console.error('Error adding book: ', error)
   }
-};
+}
 </script>
-  
-<style scoped>
 
-</style>
+<style scoped></style>
