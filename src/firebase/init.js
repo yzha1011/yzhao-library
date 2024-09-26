@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAnjGrRMUeHro4NNKDqR1IbBzVkCSHWN4Y",
-  authDomain: "week7-yiwei-48067.firebaseapp.com",
-  projectId: "week7-yiwei-48067",
-  storageBucket: "week7-yiwei-48067.appspot.com",
-  messagingSenderId: "342743216861",
-  appId: "1:342743216861:web:be62f31b7547a0aa5ba134"
+  apiKey: "AIzaSyCmu6mB7pAcM2YmDch35f4IGSqLG0715wA",
+  authDomain: "week7-yiwei-93078.firebaseapp.com",
+  projectId: "week7-yiwei-93078",
+  storageBucket: "week7-yiwei-93078.appspot.com",
+  messagingSenderId: "292152931895",
+  appId: "1:292152931895:web:afbc77f1cae4b569a831b2"
 };
 
 // Initialize Firebase

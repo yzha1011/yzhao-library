@@ -13,40 +13,45 @@
 </template>
 
 <script setup>
-  import { ref, defineEmits } from 'vue';
-import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
-import db from '../firebase/init.js';
+import { ref, defineEmits } from 'vue'
+import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore'
+import db from '../firebase/init.js'
 
-const emit = defineEmits(["selectBook"])
-const books = ref([]);
+const emit = defineEmits(['selectBook'])
+const books = ref([])
 
 const orderByAscending = async () => {
   try {
-    const q = query(collection(db, 'books'), where('isbn', '>', 1), orderBy("isbn"));
-    const querySnapshot = await getDocs(q);
-    const booksArray = [];
+    const q = query(collection(db, 'books'), where('isbn', '>', 1), orderBy('isbn'))
+    const querySnapshot = await getDocs(q)
+    const booksArray = []
     querySnapshot.forEach((doc) => {
-      booksArray.push({ id: doc.id, ...doc.data() });
-    });
-    books.value = booksArray;
+      booksArray.push({ id: doc.id, ...doc.data() })
+    })
+    books.value = booksArray
   } catch (error) {
-    console.error('Error fetching books: ', error);
+    console.error('Error fetching books: ', error)
   }
-};
+}
 
 const orderByDescending = async () => {
   try {
-    const q = query(collection(db, 'books'), where('isbn', '>', 1), orderBy("isbn", "desc"), limit(3));
-    const querySnapshot = await getDocs(q);
-    const booksArray = [];
+    const q = query(
+      collection(db, 'books'),
+      where('isbn', '>', 1),
+      orderBy('isbn', 'desc'),
+      limit(3)
+    )
+    const querySnapshot = await getDocs(q)
+    const booksArray = []
     querySnapshot.forEach((doc) => {
-      booksArray.push({ id: doc.id, ...doc.data() });
-    });
-    books.value = booksArray;
+      booksArray.push({ id: doc.id, ...doc.data() })
+    })
+    books.value = booksArray
   } catch (error) {
-    console.error('Error fetching books: ', error);
+    console.error('Error fetching books: ', error)
   }
-};
+}
 
 const selectBook = (id) => {
   emit('selectBook', id)
@@ -54,22 +59,19 @@ const selectBook = (id) => {
 
 const fetchBooks = async () => {
   try {
-    const q = query(collection(db, 'books'), where('isbn', '>', 1000));
-    const querySnapshot = await getDocs(q);
-    const booksArray = [];
+    const q = query(collection(db, 'books'), where('isbn', '>', 1000))
+    const querySnapshot = await getDocs(q)
+    const booksArray = []
     querySnapshot.forEach((doc) => {
-      booksArray.push({ id: doc.id, ...doc.data() });
-    });
-    books.value = booksArray;
+      booksArray.push({ id: doc.id, ...doc.data() })
+    })
+    books.value = booksArray
   } catch (error) {
-    console.error('Error fetching books: ', error);
+    console.error('Error fetching books: ', error)
   }
-};
+}
 
-fetchBooks();
-
+fetchBooks()
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
