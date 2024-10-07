@@ -9,11 +9,11 @@ import AdminView from '@/views/AdminView.vue'
 import AddBookView from '@/views/AddBookView.vue'
 import GetBookCountView from '@/views/GetBookCountView.vue'
 import WeatherView from '@/views/WeatherView.vue'
-import BookCountAPI from '@/views/BookCountApi.vue'
+import BookCountAPI from '@/views/BookCountAPI.vue'
 import GetAllBookAPI from '@/views/GetAllBookAPI.vue'
 import { auth } from '../utils/Auth'
 
-const {isAuthenticated} = auth()
+const { isAuthenticated } = auth()
 
 const routes = [
   {
@@ -45,30 +45,35 @@ const routes = [
     path: '/FireRegister',
     name: 'FireRegister',
     component: FirebaseRegisterView
-  },{
+  },
+  {
     path: '/Admin',
     name: 'Admin',
     component: AdminView
-  },{
+  },
+  {
     path: '/AddBook',
     name: 'AddBook',
     component: AddBookView
-  }, {
-    path: "/GetBookCount",
-    name: "GetBookCount",
+  },
+  {
+    path: '/GetBookCount',
+    name: 'GetBookCount',
     component: GetBookCountView
-  }, {
-    path: "/WeatherCheck",
-    name: "WeatherCheck",
+  },
+  {
+    path: '/WeatherCheck',
+    name: 'WeatherCheck',
     component: WeatherView
-  },{
-    path: "/BookCountAPI",
-    name: "BookCountAPI",
+  },
+  {
+    path: '/BookCountAPI',
+    name: 'BookCountAPI',
     component: BookCountAPI
   },
   {
-    path: "/GetAllBookAPI",
-    name: "GetAllBookAPI",
+    path: '/GetAllBookAPI',
+    name: 'GetAllBookAPI',
     component: GetAllBookAPI
   }
 ]
@@ -81,10 +86,10 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.name === 'About' && isAuthenticated.value !== true) {
     // alert("you need login first");
-    next({ name: "Redirection" }); 
+    next({ name: 'Redirection' })
   } else {
-    next(); 
+    next()
   }
-});
+})
 
 export default router
