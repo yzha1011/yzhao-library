@@ -1,3 +1,6 @@
+/* eslint-disable semi */
+/* eslint-disable object-curly-spacing */
+/* eslint-disable quotes */
 /**
  * Import function triggers from their respective submodules:
  *
@@ -19,13 +22,44 @@ exports.countBooks = onRequest((req, res) => {
       const booksCollection = admin.firestore().collection('books')
       const snapshot = await booksCollection.get()
       const count = snapshot.size
-      res.set('Access-Control-Allow-Origin', '*'); 
-      res.set('Access-Control-Allow-Methods', 'GET, POST'); 
+      // res.set('Access-Control-Allow-Origin', '*');
+      // res.set('Access-Control-Allow-Methods', 'GET, POST');
 
       res.status(200).send({ count })
     } catch (error) {
       console.error('Error counting books:', error.message)
       res.status(500).send('Error counting books')
+    }
+  })
+})
+
+exports.getAllBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const booksCollection = await admin.firestore().collection('books').get()
+      const response = []
+      booksCollection.forEach((doc) => {
+        response.push({ ...doc.data() })
+      })
+      res.status(200).send({ response })
+    } catch (error) {
+      console.error('Error get all books:', error)
+      res.status(500).send('Server Error get all books.')
+    }
+  })
+})
+
+exports.addBook = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const { isbn, name } = req.body
+      await admin.firestore().collection('books')
+          .add({ isbn: isbn, name: name.toUpperCase() })
+
+      res.status(200).send("Added")
+    } catch (error) {
+      console.error('Error add books:', error.message)
+      res.status(500).send('Error add book')
     }
   })
 })

@@ -10,31 +10,14 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { getAuth } from 'firebase/auth'
 
-const getIdToken = async () => {
-  const user = getAuth().currentUser
-  if (user) {
-    return await user.getIdToken()
-  } else {
-    throw new Error('User not authenticated')
-  }
-}
-
-// 定义 count 和 error 作为响应式引用
 const count = ref(null)
 const error = ref(null)
 
-// 异步获取书籍数量的函数
 const getBookCount = async () => {
-  try {
-    const token = await getIdToken() // 假设你有一个函数获取 ID Token
+  try { 
 
-    const response = await axios.get('https://countbooks-uu2iump73a-uc.a.run.app', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    const response = await axios.get('https://countbooks-uu2iump73a-uc.a.run.app')
     count.value = response.data.count
     error.value = null
   } catch (err) {

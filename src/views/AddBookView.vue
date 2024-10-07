@@ -19,14 +19,16 @@
 
 <script setup>
 import { ref } from 'vue'
-import db from '../firebase/init.js'
-import { collection, addDoc } from 'firebase/firestore'
+// import db from '../firebase/init.js'
+// import { collection, addDoc } from 'firebase/firestore'
 import BookList from '../components/BookList.vue'
 import UpdateBook from '@/components/UpdateBook.vue'
+import axios from 'axios'
 
 const isbn = ref('')
 const name = ref('')
 const selectedBookId = ref('')
+// const error = ref(null)
 
 const handleSelectBook = (id) => {
   selectedBookId.value = id
@@ -35,22 +37,16 @@ const handleSelectBook = (id) => {
 
 const addBook = async () => {
   try {
-    const isbnNumber = Number(isbn.value)
-    if (isNaN(isbnNumber)) {
-      alert('ISBN must be a valid number')
-      return
-    }
-
-    await addDoc(collection(db, 'books'), {
-      isbn: isbnNumber,
+    const response = await axios.post('https://addbook-uu2iump73a-uc.a.run.app', {
+      isbn: Number(isbn.value),
       name: name.value
     })
-
-    isbn.value = ''
-    name.value = ''
-    alert('Book added successfully!')
-  } catch (error) {
-    console.error('Error adding book: ', error)
+    alert('Add Book Success')
+    // count.value = response.data.count
+    console.log('response', response.data)
+    // error.value = null
+  } catch (err) {
+    console.error('Error fetching book count:', err)
   }
 }
 </script>
