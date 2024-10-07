@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue'
 import BHeader from './components/BHeader.vue'
-import BookCountAPI from './views/BookCountApi.vue'
+// import BookCountAPI from './views/BookCountApi.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const showHeader = computed(() => route.name !== 'BookCountAPI' && route.name !== "GetAllBookAPI")
+const showHeader = computed(() => route.name !== 'BookCountAPI' && route.name !== 'GetAllBookAPI')
 </script>
 
 <!-- <template>
