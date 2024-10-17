@@ -11,6 +11,6 @@
 
 <style scoped>
 .about {
-  width: 775px;
+  width: 800px;
 }
 </style>
