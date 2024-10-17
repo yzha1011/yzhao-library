@@ -73,13 +73,27 @@ const iconUrl = computed(() => {
 // Function to fetch current location's weather
 const fetchCurrentLocationWeather = async () => {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const { latitude, longitude } = position.coords;
-      const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`;
-      await fetchWeatherData(url);
-    });
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}`
+
+        await fetchWeatherData(url)
+      },
+      (error) => {
+        console.error("Error fetching location:", error.message)
+        alert("Unable to retrieve your location. Please enable location services.")
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    )
+  } else {
+    alert("Geolocation is not supported by this browser.")
   }
-};
+}
 
 // Function to fetch weather data using axios
 const fetchWeatherData = async (url) => {
